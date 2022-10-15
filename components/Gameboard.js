@@ -354,7 +354,7 @@ export default function Gameboard() {
     }).start();
   };
 
-  const animatedStyle = {
+  const animatedThrowStyle = {
     transform: [{ scale: animThrowsButton }]
   };
 
@@ -374,7 +374,7 @@ export default function Gameboard() {
     }).start();
   };
 
-  const animatedScale1Style = {
+  const animatedNewStyle = {
     transform: [{ scale: animNewGameButton }]
   };
 
@@ -387,7 +387,7 @@ export default function Gameboard() {
           onPress={() => throwDices()}
           onPressIn={onPressIn}
           onPressOut={onPressOut}>
-          <Animated.Text style={[style.buttonText, animatedStyle]} title='Throw dices'>
+          <Animated.Text style={[style.buttonText, animatedThrowStyle]} title='Throw dices'>
             Heitä nopat
           </Animated.Text>
         </Pressable>
@@ -419,7 +419,7 @@ export default function Gameboard() {
           onPress={() => Restart()}
           onPressIn={onPressInNew}
           onPressOut={onPressOutNew}>
-          <Animated.Text style={[style.buttonText, animatedScale1Style]} title='restart'>
+          <Animated.Text style={[style.buttonText, animatedNewStyle]} title='restart'>
             Aloita uusi
           </Animated.Text>
         </Pressable>

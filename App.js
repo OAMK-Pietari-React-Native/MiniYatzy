@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+/*   Author: Pietari Tanner 2022     */
+
+import { View, ImageBackground } from 'react-native';
+import Header from './components/Header';
+import Gameboard from './components/Gameboard';
+import Footer from './components/Footer';
+import styles from './style/style'
+import { useFonts } from 'expo-font'
 
 export default function App() {
+
+  //Fonts
+  const [loaded] = useFonts({
+    Karla: require('./assets/Fonts/Karla-VariableFont_wght.ttf'),
+    Play: require('./assets/Fonts/PlayfairDisplaySC-Bold.ttf')
+  });
+
+  if (!loaded) {
+    return null
+  };
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <ImageBackground
+        style={styles.headerImage}
+        source={require('./images/dices.jpg')}
+        resizeMode="cover">
+      </ImageBackground>
+      <Header />
+      <Gameboard />
+      <Footer />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

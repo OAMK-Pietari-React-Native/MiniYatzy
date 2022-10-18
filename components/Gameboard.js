@@ -68,18 +68,15 @@ export default function Gameboard() {
   const row = []
   for (let i = 0; i < NBR_OF_DICES; i++) {
     row.push(
-      <Grid>
-        <Col>
+        <Col key={'row' + i}>
           <Pressable key={'row' + i} onPress={() => selectedDice(i)}>
             <MaterialCommunityIcons
               name={board[i]}
-              key={'row' + i}
               size={55}
               color={getDiceColor(i)}
             ></MaterialCommunityIcons>
           </Pressable>
         </Col>
-      </Grid>
     )
   }
 
@@ -104,18 +101,15 @@ export default function Gameboard() {
   for (let i = 1; i < NBR_OF_POINTS; i++) {
     const rows = 'numeric-' + i + '-box-multiple'
     points.push(
-      <Grid>
-        <Col>
+        <Col key={'rows' + i}>
           <Pressable key={'rows' + i} onPress={() => SelectedPoints(i)}>
             <MaterialCommunityIcons
               name={rows}
-              key={'rows' + i}
               size={30}
               color={getPointsColor(i)}
             ></MaterialCommunityIcons>
           </Pressable>
         </Col>
-      </Grid>
     )
   }
 
@@ -339,7 +333,6 @@ export default function Gameboard() {
 
   //Buttons animation
   const animThrowsButton = new Animated.Value(1);
-
   const onPressIn = () => {
     Animated.spring(animThrowsButton, {
       toValue: 1.2,
@@ -359,7 +352,6 @@ export default function Gameboard() {
   };
 
   const animNewGameButton = new Animated.Value(1);
-
   const onPressInNew = () => {
     Animated.spring(animNewGameButton, {
       toValue: 1.2,
@@ -382,7 +374,7 @@ export default function Gameboard() {
     <View style={style.gameboard}>
       <ScrollView>
         <Text style={style.gameinfo}>{status}</Text>
-        <View style={style.flex}>{row}</View>
+        <View style={style.flex}><Grid>{row}</Grid></View>
         <Pressable style={style.button}
           onPress={() => throwDices()}
           onPressIn={onPressIn}
@@ -414,7 +406,7 @@ export default function Gameboard() {
             <Text style={style.gameinfo}>{DiceSix}</Text>
           </Col>
         </Grid>
-        <View style={style.flex}>{points}</View>
+        <View style={style.flex}><Grid>{points}</Grid></View>
         <Pressable style={style.button}
           onPress={() => Restart()}
           onPressIn={onPressInNew}
